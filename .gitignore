@@ -1,0 +1,34 @@
+# macOS
+.DS_Store
+
+# Android / Gradle
+**/.gradle/
+**/.kotlin/
+**/build/
+**/.cxx/
+**/.externalNativeBuild/
+**/captures/
+**/local.properties
+**/*.iml
+
+# Android Studio / IntelliJ
+**/.idea/caches/
+**/.idea/libraries/
+**/.idea/modules.xml
+**/.idea/workspace.xml
+**/.idea/navEditor.xml
+**/.idea/assetWizardSettings.xml
+
+# iOS / Xcode
+**/DerivedData/
+**/*.xcuserstate
+**/xcuserdata/
+**/*.moved-aside
+
+# Swift Package Manager
+**/.build/
+**/.swiftpm/configuration/registries.json
+**/.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+
+# Local machine secrets / environment
+.netrc
