@@ -1,4 +1,4 @@
-# TapCounter
+# SwiftToAndroid-RealExample (TapCounterLib)
 
 This repository demonstrates, through a practical example, how to implement and use a shared native library with `TapCounterLib` for both Android and iOS.
 
