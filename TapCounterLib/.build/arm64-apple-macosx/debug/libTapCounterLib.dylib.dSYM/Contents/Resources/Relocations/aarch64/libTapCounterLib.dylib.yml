@@ -1,0 +1,38 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/zoro/Desktop/TapCounter/TapCounterLib/.build/arm64-apple-macosx/debug/libTapCounterLib.dylib'
+relocations:
+  - { offset: 0x503A, size: 0x8, addend: 0x0, symName: _Java_com_example_tapcounter_TapCounter__00024init__, symObjAddr: 0x0, symBinAddr: 0xC60, symSize: 0x14 }
+  - { offset: 0x5124, size: 0x8, addend: 0x0, symName: _Java_com_example_tapcounter_TapCounter__00024init__, symObjAddr: 0x0, symBinAddr: 0xC60, symSize: 0x14 }
+  - { offset: 0x513F, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib028Java_com_example_tapcounter_aB13__00024init__11environment9thisClasss5Int64VSpySPySo18JNINativeInterfaceVGSgGSg_SvtF', symObjAddr: 0x14, symBinAddr: 0xC74, symSize: 0x16C }
+  - { offset: 0x51B1, size: 0x8, addend: 0x0, symName: _Java_com_example_tapcounter_TapCounter__00024tap__J, symObjAddr: 0x1B8, symBinAddr: 0xE18, symSize: 0x14 }
+  - { offset: 0x51CC, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib028Java_com_example_tapcounter_aB13__00024tap__J11environment9thisClass11selfPointers5Int64VSpySPySo18JNINativeInterfaceVGSgGSg_SvAGtF', symObjAddr: 0x1CC, symBinAddr: 0xE2C, symSize: 0x3BC }
+  - { offset: 0x5269, size: 0x8, addend: 0x0, symName: '_$sSSWOh', symObjAddr: 0x588, symBinAddr: 0x11E8, symSize: 0x28 }
+  - { offset: 0x527C, size: 0x8, addend: 0x0, symName: '_$ss26DefaultStringInterpolationVWOh', symObjAddr: 0x5B0, symBinAddr: 0x1210, symSize: 0x28 }
+  - { offset: 0x528F, size: 0x8, addend: 0x0, symName: _Java_com_example_tapcounter_TapCounter__00024reset__J, symObjAddr: 0x5D8, symBinAddr: 0x1238, symSize: 0x14 }
+  - { offset: 0x52AA, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib028Java_com_example_tapcounter_aB15__00024reset__J11environment9thisClass11selfPointerySpySPySo18JNINativeInterfaceVGSgGSg_Svs5Int64VtF', symObjAddr: 0x5EC, symBinAddr: 0x124C, symSize: 0x320 }
+  - { offset: 0x5347, size: 0x8, addend: 0x0, symName: _Java_com_example_tapcounter_TapCounter__00024label__J, symObjAddr: 0x90C, symBinAddr: 0x156C, symSize: 0x14 }
+  - { offset: 0x5362, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib028Java_com_example_tapcounter_aB15__00024label__J11environment9thisClass11selfPointerSvSgSpySPySo18JNINativeInterfaceVGSgGSg_Svs5Int64VtF', symObjAddr: 0x920, symBinAddr: 0x1580, symSize: 0x3D4 }
+  - { offset: 0x53FF, size: 0x8, addend: 0x0, symName: _Java_com_example_tapcounter_TapCounter__00024getCurrentCount__J, symObjAddr: 0xCF4, symBinAddr: 0x1954, symSize: 0x14 }
+  - { offset: 0x541A, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib028Java_com_example_tapcounter_aB25__00024getCurrentCount__J11environment9thisClass11selfPointers5Int64VSpySPySo18JNINativeInterfaceVGSgGSg_SvAGtF', symObjAddr: 0xD08, symBinAddr: 0x1968, symSize: 0x3BC }
+  - { offset: 0x54B7, size: 0x8, addend: 0x0, symName: _Java_com_example_tapcounter_TapCounter__00024typeMetadataAddressDowncall__, symObjAddr: 0x10C4, symBinAddr: 0x1D24, symSize: 0x14 }
+  - { offset: 0x54D2, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib028Java_com_example_tapcounter_aB36__00024typeMetadataAddressDowncall__11environment9thisClasss5Int64VSpySPySo18JNINativeInterfaceVGSgGSg_SvtF', symObjAddr: 0x10D8, symBinAddr: 0x1D38, symSize: 0x110 }
+  - { offset: 0x5528, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib05_JNI_aB0OMa', symObjAddr: 0x11E8, symBinAddr: 0x1E48, symSize: 0x14 }
+  - { offset: 0x555A, size: 0x8, addend: 0x0, symName: '_$sSpsRi_zrlE10initialize2toyxn_tF', symObjAddr: 0x180, symBinAddr: 0xDE0, symSize: 0x38 }
+  - { offset: 0x5653, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib0aB0C5count33_E6B126A53C034E8D357AA76C8646D76ALLSivpfi', symObjAddr: 0x0, symBinAddr: 0x1E5C, symSize: 0x8 }
+  - { offset: 0x5669, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib0aB0C5count33_E6B126A53C034E8D357AA76C8646D76ALLSivpfi', symObjAddr: 0x0, symBinAddr: 0x1E5C, symSize: 0x8 }
+  - { offset: 0x575F, size: 0x8, addend: 0x0, symName: ___swift_instantiateConcreteTypeFromMangledName, symObjAddr: 0x58C, symBinAddr: 0x23E8, symSize: 0x68 }
+  - { offset: 0x5772, size: 0x8, addend: 0x0, symName: '_$sSNySiGSNyxGSXsWl', symObjAddr: 0x5F4, symBinAddr: 0x2450, symSize: 0x6C }
+  - { offset: 0x5785, size: 0x8, addend: 0x0, symName: ___swift_instantiateConcreteTypeFromMangledNameAbstract, symObjAddr: 0x660, symBinAddr: 0x24BC, symSize: 0x70 }
+  - { offset: 0x5798, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib0aB0CMa', symObjAddr: 0x758, symBinAddr: 0x258C, symSize: 0x24 }
+  - { offset: 0x57C0, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib0aB0C5count33_E6B126A53C034E8D357AA76C8646D76ALLSivg', symObjAddr: 0x8, symBinAddr: 0x1E64, symSize: 0x48 }
+  - { offset: 0x57DD, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib0aB0C5count33_E6B126A53C034E8D357AA76C8646D76ALLSivs', symObjAddr: 0x50, symBinAddr: 0x1EAC, symSize: 0x48 }
+  - { offset: 0x57FA, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib0aB0CACycfC', symObjAddr: 0x98, symBinAddr: 0x1EF4, symSize: 0x38 }
+  - { offset: 0x580D, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib0aB0CACycfc', symObjAddr: 0xD0, symBinAddr: 0x1F2C, symSize: 0x28 }
+  - { offset: 0x5835, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib0aB0C3tapSiyF', symObjAddr: 0xF8, symBinAddr: 0x1F54, symSize: 0xA8 }
+  - { offset: 0x586B, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib0aB0C5resetyyF', symObjAddr: 0x1A0, symBinAddr: 0x1FFC, symSize: 0x4C }
+  - { offset: 0x588D, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib0aB0C12currentCountSivg', symObjAddr: 0x1EC, symBinAddr: 0x2048, symSize: 0x54 }
+  - { offset: 0x58AF, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib0aB0C5labelSSyF', symObjAddr: 0x240, symBinAddr: 0x209C, symSize: 0x34C }
+  - { offset: 0x58E1, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib0aB0Cfd', symObjAddr: 0x6F8, symBinAddr: 0x252C, symSize: 0x24 }
+  - { offset: 0x5903, size: 0x8, addend: 0x0, symName: '_$s13TapCounterLib0aB0CfD', symObjAddr: 0x71C, symBinAddr: 0x2550, symSize: 0x3C }
+...

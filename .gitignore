@@ -30,5 +30,17 @@
 **/.swiftpm/configuration/registries.json
 **/.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 
+# Keep the specific TapCounterLib artifacts that should ship in the repo
+!TapCounterLib/.build/
+!TapCounterLib/.build/aarch64-unknown-linux-android28/
+!TapCounterLib/.build/aarch64-unknown-linux-android28/debug/
+!TapCounterLib/.build/aarch64-unknown-linux-android28/debug/libSwiftJava.so
+!TapCounterLib/.build/aarch64-unknown-linux-android28/debug/libTapCounterLib.so
+!TapCounterLib/.build/arm64-apple-macosx/
+!TapCounterLib/.build/arm64-apple-macosx/debug/
+!TapCounterLib/.build/arm64-apple-macosx/debug/libTapCounterLib.dylib
+!TapCounterLib/.build/arm64-apple-macosx/debug/libTapCounterLib.dylib.dSYM/
+!TapCounterLib/.build/arm64-apple-macosx/debug/libTapCounterLib.dylib.dSYM/**
+
 # Local machine secrets / environment
 .netrc
