@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9B83BAC62F8C79030055A9F8 /* TapCounterSwiftLib in Frameworks */ = {isa = PBXBuildFile; productRef = 9B83BAC52F8C79030055A9F8 /* TapCounterSwiftLib */; };
+		9BF19C582F9C188F00DE1964 /* TapCounterSwiftLib in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF19C572F9C188F00DE1964 /* TapCounterSwiftLib */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		9B6807232F820BEB007D6EC1 /* TapCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B83BAC62F8C79030055A9F8 /* TapCounterSwiftLib in Frameworks */,
+				9BF19C582F9C188F00DE1964 /* TapCounterSwiftLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +72,8 @@
 			);
 			name = TapCounter;
 			packageProductDependencies = (
+				9B83BAC52F8C79030055A9F8 /* TapCounterSwiftLib */,
+				9BF19C572F9C188F00DE1964 /* TapCounterSwiftLib */,
 			);
 			productName = TapCounter;
 			productReference = 9B6807232F820BEB007D6EC1 /* TapCounter.app */;
@@ -94,6 +103,9 @@
 			);
 			mainGroup = 9B68071A2F820BEB007D6EC1;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9BF19C562F9C188F00DE1964 /* XCLocalSwiftPackageReference "../TapCounterSwiftLib" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9B6807242F820BEB007D6EC1 /* Products */;
 			projectDirPath = "";
@@ -270,13 +282,14 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 26.1;
 			};
 			name = Debug;
@@ -312,13 +325,14 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 26.1;
 			};
 			name = Release;
@@ -345,6 +359,24 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		9BF19C562F9C188F00DE1964 /* XCLocalSwiftPackageReference "../TapCounterSwiftLib" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../TapCounterSwiftLib;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9B83BAC52F8C79030055A9F8 /* TapCounterSwiftLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TapCounterSwiftLib;
+		};
+		9BF19C572F9C188F00DE1964 /* TapCounterSwiftLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TapCounterSwiftLib;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9B68071B2F820BEB007D6EC1 /* Project object */;
 }

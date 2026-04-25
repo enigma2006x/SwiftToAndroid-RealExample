@@ -3,6 +3,51 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+val swiftAndroidSdkRoot = providers.gradleProperty("swiftAndroidSdkRoot")
+    .map(::file)
+    .orElse(
+        file(
+            "${System.getProperty("user.home")}/Library/org.swift.swiftpm/swift-sdks/" +
+                "swift-6.3-RELEASE_android.artifactbundle/swift-android"
+        )
+    )
+
+val tapCounterAndroidLibRoot = rootDir.resolve("../TapCounterAndroidLib")
+
+val syncSwiftNativeLibs by tasks.registering(Sync::class) {
+    into(layout.buildDirectory.dir("generated/jniLibs"))
+
+    from(tapCounterAndroidLibRoot.resolve(".build/aarch64-unknown-linux-android28/debug")) {
+        include("libTapCounterAndroidLib.so", "libSwiftJava.so")
+        into("arm64-v8a")
+    }
+
+    from(tapCounterAndroidLibRoot.resolve(".build/x86_64-unknown-linux-android28/debug")) {
+        include("libTapCounterAndroidLib.so", "libSwiftJava.so")
+        into("x86_64")
+    }
+
+    from(swiftAndroidSdkRoot.map { it.resolve("swift-resources/usr/lib/swift-aarch64/android") }) {
+        include("*.so")
+        into("arm64-v8a")
+    }
+
+    from(swiftAndroidSdkRoot.map { it.resolve("swift-resources/usr/lib/swift-x86_64/android") }) {
+        include("*.so")
+        into("x86_64")
+    }
+
+    from(swiftAndroidSdkRoot.map { it.resolve("android-ndk-r27d/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/aarch64-linux-android") }) {
+        include("libc++_shared.so")
+        into("arm64-v8a")
+    }
+
+    from(swiftAndroidSdkRoot.map { it.resolve("android-ndk-r27d/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/x86_64-linux-android") }) {
+        include("libc++_shared.so")
+        into("x86_64")
+    }
+}
+
 android {
     namespace = "com.example.tapcounterandroid"
     compileSdk {
@@ -37,6 +82,20 @@ android {
     buildFeatures {
         compose = true
     }
+    sourceSets {
+        getByName("main") {
+            jniLibs.setSrcDirs(listOf(layout.buildDirectory.dir("generated/jniLibs").get().asFile))
+            java.srcDir(
+                rootDir.resolve(
+                    "../TapCounterAndroidLib/.build/plugins/outputs/tapcounterandroidlib/TapCounterAndroidLib/destination/JExtractSwiftPlugin/src/generated/java"
+                )
+            )
+        }
+    }
+}
+
+tasks.named("preBuild") {
+    dependsOn(syncSwiftNativeLibs)
 }
 
 dependencies {

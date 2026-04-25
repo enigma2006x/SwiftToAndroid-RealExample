@@ -9,11 +9,20 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tapcounterandroid.ui.theme.TapCounterAndroidTheme
-
+import com.tonytrejo.TapCounterAndroidLib.TapCounterBridge
+import org.swift.swiftkit.core.SwiftMemoryManagement
 class MainActivity : ComponentActivity() {
+
+    companion object {
+        init {
+            System.loadLibrary("SwiftJava")
+            System.loadLibrary("TapCounterAndroidLib")
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,6 +41,24 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TapCounterScreen(modifier: Modifier = Modifier) {
+    val isPreview = LocalInspectionMode.current
+    val tapCounter = remember(isPreview) {
+        if (isPreview) {
+            null
+        } else {
+            TapCounterBridge.init(SwiftMemoryManagement.DEFAULT_SWIFT_JAVA_AUTO_ARENA)
+        }
+    }
+    var label by remember(tapCounter, isPreview) {
+        mutableStateOf(
+            if (isPreview) {
+                "Tap me!"
+            } else {
+                tapCounter?.label().orEmpty()
+            }
+        )
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -47,14 +74,14 @@ fun TapCounterScreen(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Tap me!",
+            text = label,
             style = MaterialTheme.typography.headlineMedium
         )
 
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Built with Compose",
+            text = "Build with Compose",
             style = MaterialTheme.typography.bodyLarge
         )
 
@@ -62,7 +89,8 @@ fun TapCounterScreen(modifier: Modifier = Modifier) {
 
         Button(
             onClick = {
-
+                tapCounter?.tap()
+                label = tapCounter?.label() ?: label
             },
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -73,7 +101,8 @@ fun TapCounterScreen(modifier: Modifier = Modifier) {
 
         OutlinedButton(
             onClick = {
-
+                tapCounter?.reset()
+                label = tapCounter?.label() ?: "Tap me!"
             },
             modifier = Modifier.fillMaxWidth()
         ) {
