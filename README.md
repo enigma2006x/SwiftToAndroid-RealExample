@@ -1,19 +1,34 @@
 # SwiftToAndroid-RealExample
 
+![Swift 6.3 to Android Part 2](<Swift 6.3 → Android .so Share One Codebase Across iOS & Android (Live Demo) — Part 2.png>)
+
 This repository shows one shared Swift business-logic implementation used by both iOS and Android.
 
 The shared tap-counter logic lives in `TapCounterSwiftLib`, the iOS app consumes that package directly, and the Android side uses `TapCounterAndroidLib` as a JNI/export bridge that generates Java bindings and `.so` artifacts through `swift-java`.
 
+## Video Series
+
+This repository accompanies a two-part walkthrough showing how to build and then use a shared Swift 6.3 codebase across iOS and Android:
+
+- Part 1:
+  Build the Android `.so` from Swift 6.3 with Swift Package Manager.
+  [Watch Part 1](https://www.youtube.com/watch?v=S1WsA1XU0vs)
+- Part 2:
+  Wire the generated `.so` into the Android app, keep iOS consuming the shared Swift package directly, and explain the architecture and integration issues.
+  [Watch Part 2](https://www.youtube.com/watch?v=sExcX53AuWw)
+
+If you are starting from scratch, watch Part 1 first. Part 2 assumes the native Android artifact generation flow is already in place.
+
 ## Repository Layout
 
 - `TapCounterSwiftLib/`
-  The single source of truth for the `TapCounter` logic.
+  The single source of truth for the shared `TapCounter` logic used by both apps.
 - `TapCounterAndroidLib/`
-  Android/JNI bridge package. It depends on `TapCounterSwiftLib` and uses `swift-java` plus `JExtractSwiftPlugin` to generate Java bindings and Android native libraries.
+  Android interop package. It depends on `TapCounterSwiftLib` and uses `swift-java` plus `JExtractSwiftPlugin` to generate Java bindings and Android native libraries.
 - `TapCounter_Android/`
-  Kotlin/Jetpack Compose Android app that loads the generated `.so` files and uses the generated Java wrapper classes.
+  Kotlin/Jetpack Compose Android app that loads the generated `.so` files and calls the generated Java wrapper classes.
 - `TapCounter_iOS/`
-  SwiftUI iOS app that can consume the shared Swift logic directly.
+  SwiftUI iOS app that consumes the shared Swift package directly through Swift Package Manager.
 
 ## Architecture
 
@@ -40,6 +55,12 @@ This package is intended to stay platform-safe and reusable.
 
 The bridge target should not own business logic. It only adapts the shared Swift package for Android/native interop.
 
+This separation is the key architectural choice shown in Part 2:
+
+- `TapCounterSwiftLib` stays clean and Swift-first for Apple platforms
+- `TapCounterAndroidLib` stays Android-specific and owns the interop/export concerns
+- the business logic remains shared, even though the delivery mechanism differs by platform
+
 ### Android App Integration
 
 The Android app integrates with the generated native layer in two parts:
@@ -57,6 +78,26 @@ and loads:
 - `TapCounterAndroidLib`
 
 from `MainActivity`.
+
+## How The Series Maps To This Repo
+
+### Part 1: Generate the Android Native Layer
+
+Part 1 focuses on producing the Android native output from Swift 6.3:
+
+1. Keep the shared business logic in `TapCounterSwiftLib`.
+2. Use `TapCounterAndroidLib` as the Android-facing bridge package.
+3. Generate the Android `.so` artifact and Java bindings with `swift-java`.
+4. Treat the generated output under `.build/...` as the source for Android integration.
+
+### Part 2: Use The Same Swift Logic In Both Apps
+
+Part 2 shows the full end-to-end usage:
+
+1. The iOS app imports `TapCounterSwiftLib` as a local Swift package.
+2. The Android app uses Jetpack Compose for UI, but calls into Swift through `TapCounterBridge`.
+3. Gradle stages the generated `.so` plus its native dependencies into the Android app.
+4. Both apps end up running the same counter behavior from the same Swift implementation.
 
 ## Important Android Build Details
 
@@ -89,20 +130,19 @@ This means:
 
 The Android app references that generated source path directly, so when the Swift bridge type changes and bindings are regenerated, Android Studio can pick up the new generated classes without relying on stale copied wrapper files.
 
-## Current Practical Flow
+## End-To-End Flow
 
 1. Update shared counter behavior in `TapCounterSwiftLib`.
 2. Keep `TapCounterAndroidLib` as a bridge-only package for Android export.
 3. Regenerate Android bindings and `.so` artifacts from `TapCounterAndroidLib`.
-4. Build the Android app, which:
-   stages native libraries with Gradle,
-   compiles against generated Java bindings,
-   and uses the Swift-backed tap counter from Compose.
+4. Run the iOS app, which imports the shared Swift package directly.
+5. Build the Android app, which stages native libraries with Gradle, compiles against generated Java bindings, and uses the Swift-backed tap counter from Compose.
 
 ## Notes
 
 - `TapCounterSwiftLib` is the only place where counter business logic should live.
 - `TapCounterAndroidLib` is bridge/export glue, not a second logic implementation.
+- `TapCounter_iOS` and `TapCounter_Android` are intentionally thin host apps around the same shared logic.
 - The Android setup depends on a local Swift Android SDK installation. The Gradle script currently defaults to:
   `~/Library/org.swift.swiftpm/swift-sdks/swift-6.3-RELEASE_android.artifactbundle/swift-android`
 - If needed, that path can be overridden with the Gradle property:
