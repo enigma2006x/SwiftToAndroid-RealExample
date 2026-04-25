@@ -2,7 +2,7 @@ import Testing
 @testable import TapCounterAndroidLib
 
 @Test func tapCounterBridgeDelegatesToSharedLogic() {
-    let counterBridge = TapCounterBridge()
+    let counterBridge = TapCounter()
 
     #expect(counterBridge.currentCount == 0)
     #expect(counterBridge.tap() == 1)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B83BAC62F8C79030055A9F8 /* TapCounterSwiftLib in Frameworks */ = {isa = PBXBuildFile; productRef = 9B83BAC52F8C79030055A9F8 /* TapCounterSwiftLib */; };
+		9BF19C582F9C188F00DE1964 /* TapCounterSwiftLib in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF19C572F9C188F00DE1964 /* TapCounterSwiftLib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B83BAC62F8C79030055A9F8 /* TapCounterSwiftLib in Frameworks */,
+				9BF19C582F9C188F00DE1964 /* TapCounterSwiftLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +73,7 @@
 			name = TapCounter;
 			packageProductDependencies = (
 				9B83BAC52F8C79030055A9F8 /* TapCounterSwiftLib */,
+				9BF19C572F9C188F00DE1964 /* TapCounterSwiftLib */,
 			);
 			productName = TapCounter;
 			productReference = 9B6807232F820BEB007D6EC1 /* TapCounter.app */;
@@ -101,7 +104,7 @@
 			mainGroup = 9B68071A2F820BEB007D6EC1;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				9B83BAC42F8C79030055A9F8 /* XCLocalSwiftPackageReference "../TapCounterSwiftLib" */,
+				9BF19C562F9C188F00DE1964 /* XCLocalSwiftPackageReference "../TapCounterSwiftLib" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9B6807242F820BEB007D6EC1 /* Products */;
@@ -358,7 +361,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		9B83BAC42F8C79030055A9F8 /* XCLocalSwiftPackageReference "../TapCounterSwiftLib" */ = {
+		9BF19C562F9C188F00DE1964 /* XCLocalSwiftPackageReference "../TapCounterSwiftLib" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../TapCounterSwiftLib;
 		};
@@ -366,6 +369,10 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		9B83BAC52F8C79030055A9F8 /* TapCounterSwiftLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TapCounterSwiftLib;
+		};
+		9BF19C572F9C188F00DE1964 /* TapCounterSwiftLib */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TapCounterSwiftLib;
 		};

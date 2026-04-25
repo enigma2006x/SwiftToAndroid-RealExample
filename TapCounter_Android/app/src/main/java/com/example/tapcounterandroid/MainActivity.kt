@@ -9,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tapcounterandroid.ui.theme.TapCounterAndroidTheme
@@ -40,10 +41,23 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TapCounterScreen(modifier: Modifier = Modifier) {
-    val tapCounter = remember {
-        TapCounterBridge.init(SwiftMemoryManagement.DEFAULT_SWIFT_JAVA_AUTO_ARENA)
+    val isPreview = LocalInspectionMode.current
+    val tapCounter = remember(isPreview) {
+        if (isPreview) {
+            null
+        } else {
+            TapCounterBridge.init(SwiftMemoryManagement.DEFAULT_SWIFT_JAVA_AUTO_ARENA)
+        }
     }
-    var label by remember { mutableStateOf(tapCounter.label()) }
+    var label by remember(tapCounter, isPreview) {
+        mutableStateOf(
+            if (isPreview) {
+                "Tap me!"
+            } else {
+                tapCounter?.label().orEmpty()
+            }
+        )
+    }
 
     Column(
         modifier = modifier
@@ -75,8 +89,8 @@ fun TapCounterScreen(modifier: Modifier = Modifier) {
 
         Button(
             onClick = {
-                tapCounter.tap()
-                label = tapCounter.label()
+                tapCounter?.tap()
+                label = tapCounter?.label() ?: label
             },
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -87,8 +101,8 @@ fun TapCounterScreen(modifier: Modifier = Modifier) {
 
         OutlinedButton(
             onClick = {
-                tapCounter.reset()
-                label = tapCounter.label()
+                tapCounter?.reset()
+                label = tapCounter?.label() ?: "Tap me!"
             },
             modifier = Modifier.fillMaxWidth()
         ) {
